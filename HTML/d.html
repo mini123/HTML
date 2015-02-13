@@ -1,0 +1,37 @@
+<html>
+<head>
+<title>A Little IMBD</title>
+<script>
+obj=Object();
+function myfunction(){
+	var c=document.getElementById("demo").value
+        var d=document.getElementById("demo1").value
+	obj[c]=d;
+	alert("value entered in the database add another if you want")
+//	console.log(obj);
+//console.log(c);
+//	console.log(d);
+//	console.log(obj.c);
+	
+}
+function myfun(){
+	var c=document.getElementById("demo3").value;
+	alert("the rating of the movie entered is" + obj[c]);
+	if(!obj[c])
+		alert("movie not entered in the database");
+}
+		
+</script>
+</head>
+<body style=background-color:blue>
+  <h1>A LITTLE IMDB!!!:)</h1>
+  NAME OF THE MOVIE:<input type="text" value="" id="demo">
+  <br>
+  RATING OF THE MOVIE<input type="text" id="demo1" value="">
+  <br>
+  <button type="submit" onclick="myfunction()" value="">submit</button>
+  <hr><br>
+  ENTER THE MOVIE YOU WANT TO GET THE RATING OF!!!!<input type="text" id="demo3" value="">
+  <button type="submit" onclick="myfun()">submit</button>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<html>
+<head>
+<title>SLIDESHOW</title>
+<h1>SLIDESHOW</h1>
+<script>
+var i;
+var pics=new Array();
+pics[1]="1.jpeg";
+pics[2]="2.jpeg";
+pics[3]="3.jpeg";
+pics[4]="4.jpeg";
+function myfunc(){
+	var img=document.getElementById("u");
+	for(i=1;i<4;i++)
+	{
+		if(img.src.match("1"))
+			document.getElementById("demo1").style.visibility="visible";
+
+		if(img.src.match(i))
+		{
+			
+			if(i!=4)
+			{
+				img.src=pics[i+1];
+				if(i!=3)
+			     break;
+			}
+			if(i==3)
+			{
+				document.getElementById("demo2").style.visibility="hidden";
+				break;
+			}
+		}
+	}
+
+}
+function myfun(){
+	var img=document.getElementById("u");
+	for(i=1;i<=4;i++)
+	{
+		if(img.src.match("4"))
+		{
+			document.getElementById("demo2").style.visibility="visible";
+		}
+		if(img.src.match(i))
+		{
+			if(i==2)
+			{
+				document.getElementById("demo1").style.visibility="hidden";
+			//	break;
+			}
+			if(i!=1)
+			{
+				img.src=pics[i-1];
+				break;
+			}
+			/*if(i==2)
+			{
+				document.getElementById("demo1").style.visibility="hidden";
+				break;
+			}*/
+		}
+	}
+}
+</script>
+</head>
+<body>
+<pre>
+                <img id="u" src="1.jpeg" height="500" width="500">
+</pre>
+<button id="demo1" onclick="myfun()" style=visibility:hidden>Previous</button>
+<button id="demo2" onclick="myfunc()">Next</button>
+</body>
+</html>

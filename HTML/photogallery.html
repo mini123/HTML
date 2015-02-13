@@ -1,0 +1,48 @@
+<html>
+<title>Carousel</title>
+<h1>PHOTO GALLERY</h1>
+<body>
+  <div style="margin-left:300px">
+    <img id="u" src="1.jpeg" height="500" width="500">
+  </div>
+<script>
+function func(){
+	var x=document.getElementById("u");
+	x.src="1.jpeg";
+}
+function func1(){
+	var x=document.getElementById("u");
+	x.src="2.jpeg";
+}
+function func2(){
+	var x=document.getElementById("u");
+	x.src="3.jpeg";
+}
+function func3(){
+	var x=document.getElementById("u");
+	x.src="4.jpeg";
+}
+
+function myfun(){
+	var x=document.getElementById("u");
+	if(x.src.match("1"))
+		x.src="2.jpeg";
+	else if(x.src.match("2"))
+		x.src="3.jpeg";
+	else if(x.src.match("3"))
+		x.src="4.jpeg";
+	else if(x.src.match("4"))
+		x.src="1.jpeg";
+}
+window.setInterval("myfun()",3000);
+</script>
+<br>
+<br>
+  <div style="margin-left:200px">
+    <img id="1a" src="1.jpeg" height="200" width="200" onclick="func()">
+    <img id="2a" src="2.jpeg" height="200" width="200" onclick="func1()">
+    <img id="3a" src="3.jpeg" height="200" width="200" onclick="func2()">
+    <img id="4a" src="4.jpeg" height="200" width="200" onclick="func3()">
+  </div>
+</body>
+</html>

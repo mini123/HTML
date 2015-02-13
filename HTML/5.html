@@ -1,0 +1,138 @@
+<html>
+<head>
+<title>PING PONG</title>
+</head>
+<canvas id="canvas" width=1290 height=660></canvas>
+<script>
+var score=0;
+var canvas=document.getElementById("canvas");
+var ctx=canvas.getContext("2d");
+ctx.fillStyle="black";
+H=window.innerHeight;
+W=window.innerWidth;
+ctx.fillRect(0,0,W,H);
+ctx.fillStyle="white";
+ctx.font="40px Arial";
+ctx.fillText('START ',600,300);
+vx=4;
+vy=8;
+x=50;
+y=50;
+var z=5;
+var z1=5;
+function ball(){
+	var c=document.getElementById("canvas");
+	ctx=c.getContext("2d");
+	ctx.fillStyle="black";
+	ctx.fillRect(0,0,W,H);
+	ctx.fillRect(z-75,5,150,10);
+	ctx.fill();
+	ctx.fillRect(z-75,645,150,10);
+	ctx.fill();
+	ctx.beginPath();
+	ctx.arc(x,y,5,0,2*Math.PI);
+	ctx.fill();
+	if(y<=10 && x>=z-75 && x<=z+75)
+	{
+		y=20;
+		if(vy<0)
+		vy=-vy;
+		score++;
+		ctx.beginPath();
+		ctx.arc(x,y,5,0,2*Math.PI);
+		ctx.fill();
+
+	}
+	else if(y>=640 && x>=z-75 && x<=z+75)
+	{
+		y=639;
+		if(vy>0)
+		vy=-vy;
+		score++;
+		ctx.beginPath();
+		ctx.arc(x,y,5,0,2*Math.PI);
+		ctx.fill();
+
+	}
+	if(x>=1285)
+	{
+		if(vx>0)
+		vx=-vx;
+		x=1284;
+		ctx.beginPath();
+		ctx.arc(x,y,5,0,2*Math.PI);
+		ctx.fill();
+
+	}
+	if(x<=5)
+	{
+		if(vx<0)
+		vx=-vx;
+		x=6;
+		ctx.beginPath();
+		ctx.arc(x,y,5,0,2*Math.PI);
+		ctx.fill();
+
+	}
+	x=x+vx;
+	y=y+vy;
+	ctx.fillStyle="black";
+	ctx.fillRect(0,0,W,H);
+	ctx.fillStyle="white";
+	ctx.fillRect(z-75,5,150,10);
+	ctx.fill();
+	ctx.fillRect(z-75,645,150,10);
+	ctx.fill();
+	ctx.fillStyle="white";
+	ctx.font="30px Arial";
+	ctx.fillText("score :" + score,10,100);
+	if(score%4==0)
+	{
+		vx+=2;
+		vy+=4;
+
+	}
+
+	if(y-vy<0)
+	{
+		alert("oops!! game over :(  your score was "+score + " reload to play again :)");
+		window.clearInterval(tm);
+	
+
+	}
+	if(y-vy>650)
+	{
+		alert("oops!! game over :( your score was " + score + " reload to play again :)");
+		window.clearInterval(tm);
+	
+
+	}
+
+}
+canvas.addEventListener("click",funu,true);
+function funu(event){
+
+	tm=window.setInterval(ball,120);
+	canvas.addEventListener("mousemove",fun,true);
+
+}
+
+function fun(event){
+	ctx.fillStyle="black";
+	ctx.fillRect(0,0,W,H);
+	ctx.fillStyle="white";
+	z=event.pageX;
+	z1=event.pageY;
+	ctx.fillRect(event.pageX-75,5,150,10);
+	ctx.fill();
+	ctx.fillRect(event.pageX-75,645,150,10);
+	ctx.fill();
+	ctx.fillStyle="white";
+	ctx.font="30px Arial";
+	ctx.fillText("score :"+score,10,100);
+}
+</script>
+<body>
+<!--<embed height="5" width="5" src="tg.mp3">-->
+</body>
+</html>
